@@ -19,16 +19,13 @@ fn countdown_timer(duration: Duration) {
   loop {
       let now = Instant::now();
 
-      // Break the loop if we've reached or passed the end time.
       if now >= end_time {
           break;
       }
 
-      // Calculate remaining time
       let remaining = end_time - now;
       let remaining_secs = remaining.as_secs();
 
-      // Print the time inline
       print!("\r{}", format_time(remaining_secs));
       io::stdout().flush().unwrap();
 
@@ -41,6 +38,6 @@ fn countdown_timer(duration: Duration) {
 
 pub fn start(minutes: u64) {
     clear_terminal();
-    let countdown_duration = Duration::from_secs(minutes * 60); // 25 minutes
+    let countdown_duration = Duration::from_secs(minutes * 60);
     countdown_timer(countdown_duration);
 }
